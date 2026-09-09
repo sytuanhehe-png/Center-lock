@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07090e">
+<title>AIMLOCK CHINA V2</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#07090e;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",Arial,sans-serif}
+.wrap{max-width:520px;margin:auto;padding:18px 16px 40px}.top{padding:18px 5px}.logo{font-size:28px;font-weight:900}.green{color:#20d879}.sub{color:#858da0;font-size:13px;margin-top:5px}
+.status{display:flex;justify-content:space-between;align-items:center;background:#10141c;border:1px solid #202733;border-radius:18px;padding:15px;margin-bottom:12px}.pill{font-size:11px;font-weight:800;color:#21d879;background:#12271d;padding:7px 10px;border-radius:10px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.card{background:#10141c;border:1px solid #202733;border-radius:18px;padding:15px;min-height:112px}.icon{font-size:22px}.title{font-weight:800;margin-top:7px}.desc{font-size:11px;color:#7e8798;margin-top:4px;line-height:1.35}
+.switch{margin-top:12px;width:48px;height:28px;border:0;border-radius:20px;background:#303744;position:relative}.switch:after{content:"";position:absolute;width:22px;height:22px;left:3px;top:3px;border-radius:50%;background:#fff;transition:.2s}.switch.on{background:#20d879}.switch.on:after{left:23px}
+.panel{margin-top:12px;background:#10141c;border:1px solid #202733;border-radius:18px;padding:16px}.panel h3{margin:0 0 10px}.line{display:flex;justify-content:space-between;font-size:13px;color:#aab2c0;margin:12px 0 5px}.val{color:#20d879;font-weight:800}input{width:100%;accent-color:#20d879}
+button.action{width:100%;border:0;border-radius:14px;padding:14px;margin-top:10px;font-weight:900;background:#20d879;color:#06100a}
+button.reset{background:#1b212c;color:#fff}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);opacity:0;background:#202733;padding:11px 15px;border-radius:12px;font-size:13px;transition:.25s}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.note{text-align:center;color:#687184;font-size:11px;line-height:1.5;margin:16px 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="logo">AIMLOCK <span class="green">CHINA</span> V2</div><div class="sub">Control Center • WebClip</div></div>
+  <div class="status"><div><b>Control Center</b><div class="sub">Các thiết lập được lưu trên thiết bị</div></div><span class="pill">SAFE MODE</span></div>
+
+  <div class="grid">
+    <div class="card"><div class="icon">🎯</div><div class="title">Nhẹ tâm</div><div class="desc">Preset luyện thao tác kéo tâm</div><button class="switch" data-k="light"></button></div>
+    <div class="card"><div class="icon">〰️</div><div class="title">Fix rung</div><div class="desc">Preset luyện kiểm soát tay</div><button class="switch" data-k="shake"></button></div>
+    <div class="card"><div class="icon">🔴</div><div class="title">Bám đầu</div><div class="desc">Preset luyện tâm thủ công</div><button class="switch" data-k="head"></button></div>
+    <div class="card"><div class="icon">⚡</div><div class="title">Nhạy tâm</div><div class="desc">Tăng mức preset độ nhạy</div><button class="switch" data-k="sensi"></button></div>
+    <div class="card"><div class="icon">🔒</div><div class="title">Khóa cài đặt</div><div class="desc">Khóa giao diện khi đang dùng</div><button class="switch" data-k="lock"></button></div>
+    <div class="card"><div class="icon">🌙</div><div class="title">Dark Mode</div><div class="desc">Giao diện tối cho WebClip</div><button class="switch" data-k="dark"></button></div>
+  </div>
+
+  <div class="panel">
+    <h3>Độ nhạy luyện tập</h3>
+    <div class="line"><span>General</span><span class="val" id="generalV">100</span></div><input id="general" type="range" min="0" max="200" value="100">
+    <div class="line"><span>Red Dot</span><span class="val" id="redV">90</span></div><input id="red" type="range" min="0" max="200" value="90">
+    <div class="line"><span>2X Scope</span><span class="val" id="scopeV">80</span></div><input id="scope" type="range" min="0" max="200" value="80">
+    <button class="action" id="save">LƯU CÀI ĐẶT</button>
+    <button class="action reset" id="reset">ĐẶT LẠI</button>
+  </div>
+  <div class="note">Ứng dụng hoạt động độc lập như WebClip. Các nút chỉ thay đổi cài đặt giao diện/preset luyện tập, không hack, không khóa tâm và không can thiệp vào Free Fire.</div>
+</div>
+<div class="toast" id="toast">Đã lưu ✓</div>
+<script>
+const keys=["light","shake","head","sensi","lock","dark"], ids=["general","red","scope"];
+const defaults={light:false,shake:false,head:false,sensi:false,lock:false,dark:true,general:100,red:90,scope:80};
+let s=JSON.parse(localStorage.getItem("aimlock_v2")||"null")||{...defaults};
+const toast=t=>{toastEl.textContent=t;toastEl.classList.add("show");setTimeout(()=>toastEl.classList.remove("show"),1000)};
+const toastEl=document.getElementById("toast");
+document.querySelectorAll(".switch").forEach(b=>{b.classList.toggle("on",!!s[b.dataset.k]);b.onclick=()=>{if(s.lock)return toast("Đang khóa cài đặt 🔒");s[b.dataset.k]=!s[b.dataset.k];b.classList.toggle("on",s[b.dataset.k]);localStorage.setItem("aimlock_v2",JSON.stringify(s));}});
+ids.forEach(id=>{let e=document.getElementById(id),v=document.getElementById(id+"V");e.value=s[id];v.textContent=s[id];e.oninput=()=>v.textContent=e.value});
+save.onclick=()=>{ids.forEach(id=>s[id]=+document.getElementById(id).value);localStorage.setItem("aimlock_v2",JSON.stringify(s));toast("Đã lưu cài đặt ✓")};
+reset.onclick=()=>{s={...defaults};localStorage.setItem("aimlock_v2",JSON.stringify(s));location.reload()};
+</script>
+</body></html>
