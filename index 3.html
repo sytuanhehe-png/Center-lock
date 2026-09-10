@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070711">
+<title>CENTER LOCK — Premium UI</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+body{min-height:100vh;padding:18px;background:
+radial-gradient(circle at 12% 8%,#5b35a855 0,transparent 28%),
+radial-gradient(circle at 90% 30%,#1769a044 0,transparent 30%),
+radial-gradient(circle at 50% 100%,#8b25a533 0,transparent 35%),#05050c;color:#fff}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0 42%,#ffffff03 50%,transparent 58%)}
+.app{width:min(440px,100%);margin:auto;padding:18px;border:1px solid #ffffff18;border-radius:34px;background:#090a13cc;box-shadow:0 30px 100px #000c,0 0 55px #713cff18;backdrop-filter:blur(28px);overflow:hidden}
+.top{display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:12px}.logo{width:58px;height:58px;border-radius:19px;display:grid;place-items:center;font-size:27px;background:linear-gradient(145deg,#8d5cff,#226dff);box-shadow:0 0 28px #704fff66, inset 0 1px #ffffff55}.title{font-weight:900;font-size:21px;letter-spacing:.5px}.sub{font-size:10px;color:#858ba5;letter-spacing:1.4px;margin-top:4px}.version{font-size:10px;padding:8px 10px;border-radius:12px;color:#c4b9ff;border:1px solid #815cff44;background:#704fff12}
+.hero{text-align:center;padding:24px 5px 18px}.hero h1{margin:0;font-size:42px;line-height:1;background:linear-gradient(90deg,#fff 10%,#c98cff 52%,#55baff 90%);-webkit-background-clip:text;color:transparent;letter-spacing:2px;text-shadow:0 0 35px #804cff33}.hero p{margin:9px 0 0;color:#858ca8;font-size:10px;letter-spacing:2.8px}.status{display:flex;align-items:center;gap:9px;padding:14px 15px;border:1px solid #ffffff12;border-radius:18px;background:linear-gradient(90deg,#ffffff08,#ffffff04);color:#aeb5ca;font-size:12px}.dot{width:9px;height:9px;border-radius:50%;background:#666;box-shadow:0 0 0 transparent}.dot.on{background:#48f0a1;box-shadow:0 0 14px #48f0a1}.count{margin-left:auto;color:#6f7690;font-size:10px}.card{margin-top:13px;padding:5px 14px;border:1px solid #ffffff12;border-radius:23px;background:#ffffff06}.row{display:flex;align-items:center;justify-content:space-between;padding:16px 0}.row+.row{border-top:1px solid #ffffff0c}.left{display:flex;align-items:center;gap:12px}.icon{width:44px;height:44px;border-radius:15px;display:grid;place-items:center;font-size:20px;background:linear-gradient(145deg,#7650ff22,#168dff10);border:1px solid #8b6cff22;box-shadow:inset 0 0 18px #704fff0b}.name{font-size:14px;font-weight:850;letter-spacing:.3px}.desc{font-size:10px;color:#747b94;margin-top:4px}.switch{width:54px;height:31px;border:0;border-radius:20px;padding:3px;background:#292c3a;cursor:pointer;transition:.22s;box-shadow:inset 0 0 0 1px #ffffff08}.switch span{display:block;width:25px;height:25px;border-radius:50%;background:#e4e6ed;transition:.22s;box-shadow:0 2px 6px #0007}.switch.active{background:linear-gradient(135deg,#7853ff,#268dff);box-shadow:0 0 18px #674dff55}.switch.active span{transform:translateX(23px);background:#fff}.start{width:100%;margin-top:16px;padding:17px;border:1px solid #b18aff55;border-radius:19px;color:#fff;font-size:15px;font-weight:900;letter-spacing:.4px;background:linear-gradient(105deg,#6d43ff,#2c7fff,#7050ff);background-size:200% 100%;box-shadow:0 14px 35px #4c50ff44;cursor:pointer;transition:.2s}.start:hover{background-position:100% 0}.start:active{transform:scale(.98)}.nav{display:flex;justify-content:space-around;margin-top:18px;padding:7px 3px 2px;border-top:1px solid #ffffff0d}.nav div{flex:1;text-align:center;color:#747b93;font-size:9px;padding:9px 2px;border-radius:14px}.nav b{display:block;font-size:17px;margin-bottom:3px}.nav .active{color:#b58aff;background:#704fff0d}.footer{text-align:center;color:#555c74;font-size:9px;margin-top:12px;line-height:1.6}
+</style>
+</head>
+<body>
+<main class="app">
+<div class="top"><div class="brand"><div class="logo">♛</div><div><div class="title">CENTER LOCK</div><div class="sub">PREMIUM GAMING INTERFACE</div></div></div><div class="version">V1.0</div></div>
+<section class="hero"><h1>CENTER LOCK</h1><p>SAFE • SMOOTH • STABLE</p></section>
+<div class="status"><span class="dot" id="dot"></span><span id="status">SYSTEM READY • TẤT CẢ ĐANG TẮT</span><span class="count" id="count">0/4</span></div>
+<section class="card">
+<div class="row"><div class="left"><div class="icon">🎯</div><div><div class="name">HEADLOCK</div><div class="desc">Giao diện mô phỏng</div></div></div><button class="switch" aria-label="Headlock"><span></span></button></div>
+<div class="row"><div class="left"><div class="icon">🖱️</div><div><div class="name">AIM DRAG</div><div class="desc">Giao diện mô phỏng</div></div></div><button class="switch" aria-label="Aim Drag"><span></span></button></div>
+<div class="row"><div class="left"><div class="icon">📳</div><div><div class="name">FIX RUNG</div><div class="desc">Giao diện mô phỏng</div></div></div><button class="switch" aria-label="Fix Rung"><span></span></button></div>
+<div class="row"><div class="left"><div class="icon">⚡</div><div><div class="name">TỐI ƯU CẢM GIÁC</div><div class="desc">Giao diện mô phỏng</div></div></div><button class="switch" aria-label="Tối ưu"><span></span></button></div>
+</section>
+<button class="start" id="start">▶ &nbsp; START SYSTEM</button>
+<nav class="nav"><div class="active"><b>⌂</b>TRANG CHỦ</div><div><b>☷</b>CÀI ĐẶT</div><div><b>ⓘ</b>THÔNG TIN</div><div><b>↪</b>THOÁT</div></nav>
+<div class="footer">CENTER LOCK • DEMO UI<br>Không can thiệp hoặc tự động khóa mục tiêu trong game</div>
+</main>
+<script>
+const buttons=[...document.querySelectorAll(".switch")],statusEl=document.querySelector("#status"),dot=document.querySelector("#dot"),count=document.querySelector("#count");
+function update(){const n=buttons.filter(b=>b.classList.contains("active")).length;statusEl.textContent=n?`${n} CHỨC NĂNG ĐANG BẬT`:"SYSTEM READY • TẤT CẢ ĐANG TẮT";count.textContent=`${n}/4`;dot.classList.toggle("on",n>0)}
+buttons.forEach(b=>b.addEventListener("click",()=>{b.classList.toggle("active");update()}));
+window.addEventListener("pageshow",()=>{buttons.forEach(b=>b.classList.remove("active"));update()});
+document.querySelector("#start").onclick=()=>alert("CENTER LOCK đã khởi động ở chế độ Demo.");
+</script>
+</body>
+</html>
