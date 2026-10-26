@@ -1,0 +1,189 @@
+<!-- language: XML, file: recoil_trainer_all.xml, note: tách từng block theo path ghi trong comment -->
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/AndroidManifest.xml                        -->
+<!-- ============================================================ -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.axion.recoiltrainer">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Recoil"
+        android:supportsRtl="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/layout/activity_main.xml               -->
+<!-- ============================================================ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/tv_mode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lbl_mode_default"
+            android:textColor="@color/accent_blue"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_score_zero"
+            android:textColor="@color/accent_green"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_streak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_streak_zero"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+    <com.axion.recoiltrainer.TrainerView
+        android:id="@+id/trainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btn_mode"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/btn_mode"
+            android:backgroundTint="@color/accent_blue"
+            android:textColor="@color/bg_dark" />
+
+        <Button
+            android:id="@+id/btn_reset"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:text="@string/btn_reset"
+            android:backgroundTint="@color/accent_green"
+            android:textColor="@color/bg_dark" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/values/strings.xml                     -->
+<!-- ============================================================ -->
+<resources>
+    <string name="app_name">Recoil Trainer</string>
+    <string name="lbl_mode_default">Mode: AK</string>
+    <string name="lbl_score_zero">Score: 0</string>
+    <string name="lbl_streak_zero">Streak: 0</string>
+    <string name="btn_mode">Change Pattern</string>
+    <string name="btn_reset">Reset</string>
+</resources>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/values/colors.xml                      -->
+<!-- ============================================================ -->
+<resources>
+    <color name="bg_dark">#0D1117</color>
+    <color name="text_primary">#E6EDF3</color>
+    <color name="accent_blue">#58A6FF</color>
+    <color name="accent_green">#3FB950</color>
+</resources>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/values/themes.xml                      -->
+<!-- ============================================================ -->
+<resources>
+    <style name="Theme.Recoil" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/accent_blue</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+    </style>
+</resources>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml      -->
+<!-- ============================================================ -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/bg_dark" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml -->
+<!-- ============================================================ -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/bg_dark" />
+    <foreground android:drawable="@drawable/ic_launcher_foreground" />
+</adaptive-icon>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/drawable/ic_launcher_foreground.xml    -->
+<!-- ============================================================ -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#58A6FF"
+        android:pathData="M54,54 m-28,0 a28,28 0 1,0 56,0 a28,28 0 1,0 -56,0" />
+    <path
+        android:fillColor="#0D1117"
+        android:pathData="M54,54 m-20,0 a20,20 0 1,0 40,0 a20,20 0 1,0 -40,0" />
+    <path
+        android:fillColor="#58A6FF"
+        android:pathData="M54,54 m-8,0 a8,8 0 1,0 16,0 a8,8 0 1,0 -16,0" />
+</vector>
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/xml/backup_rules.xml                   -->
+<!-- ============================================================ -->
+<full-backup-content />
+
+<!-- ============================================================ -->
+<!-- PATH: app/src/main/res/xml/data_extraction_rules.xml          -->
+<!-- ============================================================ -->
+<data-extraction-rules>
+    <cloud-backup />
+    <device-transfer />
+</data-extraction-rules>
